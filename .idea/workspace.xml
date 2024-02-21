@@ -5,8 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fce65556-8a24-458d-84c9-070304cd90b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/RECORDS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/SHA256SUMS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive01.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive01.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive02.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive02.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive03.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive03.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive04.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive04.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive05.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive05.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive06.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive06.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive07.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive07.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive08.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive08.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive09.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive09.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive10.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive10.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive11.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive11.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive12.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive12.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive13.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive13.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive14.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive14.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive15.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive15.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive16.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive16.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive17a.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive17a.hea" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive17b.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zadani 2/InputData/drive17b.hea" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zadani1/__1__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Zadani1/__1__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zadani 2/__2__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Zadani 2/__2__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,16 +70,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__1__.executor": "Run",
-    "Python.__2__.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Python_Projects/Zprac_Signalu/Zadani 2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__1__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__2__.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Python_Projects/Zprac_Signalu/Zadani 2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Python_Projects\Zprac_Signalu\Zadani 2" />
