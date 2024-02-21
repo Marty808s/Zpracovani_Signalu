@@ -29,6 +29,7 @@ dom_fs = 15.5
 length = 50000 #cut na délku array signálu ECG - pro korelační funkci
 
 def convolution(signal, treshold, length=length ,dom_fs=dom_fs):
+    return 'yeeah'
 
 
 
