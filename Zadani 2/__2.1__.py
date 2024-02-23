@@ -29,7 +29,6 @@ dom_fs = 15.5
 length = 50000 #cut na délku array signálu ECG - pro korelační funkci
 
 def convolution(signal, kernel):
-
     # Výstupní signál bude mít délku len(signal) + len(kernel) - 1
     output_length = len(signal) + len(kernel) - 1
     output = np.zeros(output_length)
@@ -70,6 +69,7 @@ for i, file in enumerate(drive_files):
 
     # Detekce peaků
     peaks = find_peaks_numeric(ecg_cut, threshold)
+    print(len(peaks))
 
     # Vykreslení EKG signálu a detekovaných peaků
     plt.subplot(pocet_radku, grafy_na_strance, i+1)
