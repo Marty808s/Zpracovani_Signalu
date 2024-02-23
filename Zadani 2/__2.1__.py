@@ -43,55 +43,48 @@ def convolution(signal, kernel):
 
     return output
 
-# Pan-Tompkins algoritmus pro detekci QRS komplexů
-def pan_tompkins(ecg_signal, fs):
-    # Nízkofrekvenční filtrace (0.5-40 Hz)
-    # Implementace filtru zde
-    filtered_ecg = ecg_signal  # Pro demonstrační účely necháme signál nezměněný
-
-    # Derivace
-    # Implementace derivace zde
-    derivative_ecg = np.diff(filtered_ecg)
-
-    # Squaring
-    squared_ecg = derivative_ecg ** 2
-
-    # Moving Window Integration
-    # Implementace okénkové integrace zde
-    window_width = int(0.150 * fs)  # 150 ms
-    mwi_ecg = convolution(squared_ecg, np.ones(window_width) / window_width)
-
-    # Adaptive Thresholding
-    threshold = 0.6 * np.max(mwi_ecg)
-
-    # Detekce vrcholů QRS
-    qrs_peaks_indices = np.where(mwi_ecg > threshold)[0]
-
-    return qrs_peaks_indices
+def find_peaks_numeric(signal, threshold):
+    peaks = []
+    for i in range(1, len(signal) - 1):
+        if signal[i] > threshold and signal[i] > signal[i-1] and signal[i] > signal[i+1]:
+            peaks.append(i)
+    return peaks
 
 
-for file in drive_files:
+# Počet grafů na jedné stránce
+grafy_na_strance = 3
+
+# Inicializace figure
+plt.figure(figsize=(15, 10))
+
+# Vypočet počtu řádků (zaokrouhlení nahoru)
+pocet_radku = int(np.ceil(len(drive_files) / grafy_na_strance))
+
+for i, file in enumerate(drive_files):
     record_name = os.path.splitext(file)[0]
     signals, fields = wfdb.rdsamp(os.path.join(lib_path, record_name))
     ecg_signal = signals[:, 0]
     fs = fields['fs']
-    # Detekce QRS komplexů pomocí Pan-Tompkins algoritmu
-    qrs_peaks_indices = pan_tompkins(ecg_signal, fs)
+    ecg_cut = ecg_signal[:500]
+    threshold = 0.6 * max(ecg_cut)
 
-    # Vykreslení EKG signálu a detekovaných QRS komplexů
-    plt.figure(figsize=(10, 6))
-    plt.plot(np.arange(len(ecg_signal)) / fs, ecg_signal, label='EKG signál')
-    plt.scatter(np.array(qrs_peaks_indices) / fs, ecg_signal[qrs_peaks_indices], color='red',
-                label='Detekované QRS komplexy')
+    # Detekce peaků
+    peaks = find_peaks_numeric(ecg_cut, threshold)
+
+    # Vykreslení EKG signálu a detekovaných peaků
+    plt.subplot(pocet_radku, grafy_na_strance, i+1)
+    plt.plot(ecg_cut, label='EKG signál {}'.format(record_name))
+    plt.plot(peaks, ecg_signal[peaks], 'r.', markersize=10, label='Detekované peaky {}'.format(record_name))
+
+    # Nastavení popisků a titulu
     plt.xlabel('Čas (s)')
     plt.ylabel('Amplituda')
-    plt.title('Detekce QRS komplexů pomocí Pan-Tompkins algoritmu (s numerickou konvolucí)')
+    plt.title('Detekce peaků pomocí numerické metody s thresholdem {}'.format(threshold))
     plt.legend()
     plt.grid(True)
-    plt.show()
 
-
-
+plt.tight_layout()
+plt.show()
 
 
 
