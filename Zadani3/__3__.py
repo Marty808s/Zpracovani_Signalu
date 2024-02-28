@@ -18,7 +18,6 @@ plt.show()
 time = round(len(EMG_signal)/fs,3)
 print(time)
 
-
 def integration(signal):
     total_integral = []
     for i in range(len(signal) - 1):
@@ -27,50 +26,64 @@ def integration(signal):
     return total_integral
 
 
-def compute_derivative(signal, fs): #derivace pole, pak podle width udělám list -> mean -> přepíšeme list do 1 hodnoty - vracíme jako hodnotu pro okno
+def compute_derivative(signal, fs, width): #derivace pole, pak podle width udělám list -> mean -> přepíšeme list do 1 hodnoty - vracíme jako hodnotu pro okno
+    width = width
     derivative = np.diff(signal) * fs
-    return derivative
+    print(f"Length derivation {len(derivative)}")
+    sublist = np.array_split(derivative,width)
+    print(f"Length sublist {len(sublist)}")
+    points = []
+
+    counter = 0
+    for i in sublist:
+        counter +=1
+        point = np.sum(i)
+        points.append((point,((counter*width)-width/2)))
+
+    return points
 
 
 def window_detection(derivative, threshold):
-    increasing_regions = np.where(derivative > threshold)[0]
-    decreasing_regions = np.where(derivative < -threshold)[0]
+    increasing_regions = [(val, idx) for val, idx in derivative if val > threshold]
+    decreasing_regions = [(val, idx) for val, idx in derivative if val < -threshold]
     return increasing_regions, decreasing_regions
 
-threshold = 0.08
+threshold = 0.008
 
-sig = integration(EMG_signal)
+sig = integration(EMG_signal[:10000])
 plt.plot(sig)
 plt.show()
 
-sig_der = compute_derivative(sig,fs)
+sig_der = compute_derivative(sig,fs,100)
+inc_indices, dec_indices = window_detection(sig_der,threshold)
+
+
 print(f"Sig_der: {sig_der}")
-detected_win = window_detection(sig_der,threshold)
-
-
-print(len(detected_win[0]))
-print(len(detected_win[1]))
-
-inc_indices = detected_win[0]
-dec_indices = detected_win[1]
-
+print(f"Length Sig_der: {len(sig_der)}")
 print("inc_indices:", inc_indices)
-print("dec_indices:", dec_indices)
+print("length inc_indices:", len(inc_indices))
+print("dec_indices:", len(inc_indices))
+print("length dec_indices:", len(dec_indices))
+
 
 def sort_values(sig_input, inc_indices, dec_indices):
     inc = np.take(sig_input, inc_indices)
     dec = np.take(sig_input, dec_indices)
     return inc, dec
+#sorted_val = sort_values(sig, inc_indices, dec_indices)
 
-sorted_val = sort_values(sig, inc_indices, dec_indices)
 
-plt.plot(EMG_signal)  # Vykreslit vstupní signál EMG
+inc_values, inc_indices = zip(*inc_indices)
 
-# Vykreslit body pro detekci nárůstu aktivity
-plt.plot(inc_indices, EMG_signal[inc_indices], 'ro', label='Nárůst aktivity')
+print(inc_values)
+print(inc_indices)
 
-# Vykreslit body pro detekci poklesu aktivity
-plt.plot(dec_indices, EMG_signal[dec_indices], 'bo', label='Pokles aktivity')
+dec_values, dec_indices = zip(*dec_indices)
+
+plt.plot(EMG_signal[:10000], label='Raw signál')
+plt.plot(sig,'--', label='Integrovaý signál')  # Vykreslit vstupní signál EMG
+plt.plot(inc_indices, inc_values, 'ro', label='Nárůst aktivity')
+plt.plot(dec_indices, dec_values, 'bo', label='Pokles aktivity')
 
 plt.legend()  # Přidat legendu
 plt.show()
