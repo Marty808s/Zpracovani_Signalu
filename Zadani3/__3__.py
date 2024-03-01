@@ -29,15 +29,16 @@ def integration(signal):
 def compute_derivative(signal, fs, width): #derivace pole, pak podle width udělám list -> mean -> přepíšeme list do 1 hodnoty - vracíme jako hodnotu pro okno
     width = width
     derivative = np.diff(signal) * fs
-    print(f"Length derivation {len(derivative)}")
-    sublist = np.array_split(derivative,width)
+    length = len(derivative)
+    sublist = np.array_split(derivative,(length/width))
     print(f"Length sublist {len(sublist)}")
+    print(sublist[:10])
     points = []
 
     counter = 0
     for i in sublist:
         counter +=1
-        point = np.sum(i)
+        point = np.mean(i)
         points.append((point,((counter*width)-width/2)))
 
     return points
@@ -48,13 +49,13 @@ def window_detection(derivative, threshold):
     decreasing_regions = [(val, idx) for val, idx in derivative if val < -threshold]
     return increasing_regions, decreasing_regions
 
-threshold = 0.008
+threshold = 0.0001
 
 sig = integration(EMG_signal[:10000])
 plt.plot(sig)
 plt.show()
 
-sig_der = compute_derivative(sig,fs,100)
+sig_der = compute_derivative(sig,fs,10)
 inc_indices, dec_indices = window_detection(sig_der,threshold)
 
 
@@ -85,5 +86,5 @@ plt.plot(sig,'--', label='Integrovaý signál')  # Vykreslit vstupní signál EM
 plt.plot(inc_indices, inc_values, 'ro', label='Nárůst aktivity')
 plt.plot(dec_indices, dec_values, 'bo', label='Pokles aktivity')
 
-plt.legend()  # Přidat legendu
+plt.legend()
 plt.show()
