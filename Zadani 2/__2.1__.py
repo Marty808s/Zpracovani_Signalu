@@ -59,6 +59,8 @@ plt.figure(figsize=(15, 10))
 # Vypočet počtu řádků (zaokrouhlení nahoru)
 pocet_radku = int(np.ceil(len(drive_files) / grafy_na_strance))
 
+
+
 for i, file in enumerate(drive_files):
     record_name = os.path.splitext(file)[0]
     signals, fields = wfdb.rdsamp(os.path.join(lib_path, record_name))
