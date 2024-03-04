@@ -38,6 +38,18 @@ def convolution(signal, kernel):
     return output
 
 
+def custom_find_peaks(signal, adaptive_thresholds, min_distance):
+    is_peak = (signal[1:-1] > adaptive_thresholds[1:-1]) & (signal[1:-1] > signal[:-2]) & (signal[1:-1] > signal[2:])
+    peaks = np.where(is_peak)[0] + 1  # Add 1 to adjust for the shifted index
+
+    # Refine peaks based on the minimum distance
+    refined_peaks = [peaks[0]]
+    for peak in peaks[1:]:
+        if peak - refined_peaks[-1] > min_distance:
+            refined_peaks.append(peak)
+
+    return np.array(refined_peaks)
+
 def HearthRate(data_path):
     signals, fields = wfdb.rdsamp(data_path)
     ECG_signal = signals[:, 0]  # Získání signálu 'ECG'
@@ -55,7 +67,7 @@ def HearthRate(data_path):
     adaptive_thresholds = adaptive_threshold_median(ECG_smoothed, window_size_adaptive)
 
     # Detekce R-vrcholů s použitím adaptivního prahu
-    R_peaks_indices, _ = find_peaks(ECG_smoothed, height=adaptive_thresholds, distance=fs * 0.6)
+    R_peaks_indices = custom_find_peaks(ECG_smoothed, adaptive_thresholds, fs * 0.6)
 
     # Vykreslení signálu s detekovanými R-vrcholy a adaptivním prahem
     plt.figure(figsize=(12, 6))
