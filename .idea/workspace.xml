@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fce65556-8a24-458d-84c9-070304cd90b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Zadani 2/2_Clean.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zadani 2/__2.1__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Zadani 2/__2.1__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZadaniPrace/~$minarniPrace-II.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zadani 2/2_Clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/Zadani 2/2_Clean.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,21 +32,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.2_Clean.executor": "Run",
-    "Python.__1__.executor": "Run",
-    "Python.__2.1__ (1).executor": "Run",
-    "Python.__2.2__.executor": "Run",
-    "Python.__2__.executor": "Run",
-    "Python.__3__.executor": "Run",
-    "Python.__Zvuk__.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Python_Projects/Zprac_Signalu/Zadani3"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.2_Clean.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__1__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__2.1__ (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.__2.2__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__2__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__3__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__Zvuk__.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Python_Projects/Zprac_Signalu/Zadani3&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Python_Projects\Zprac_Signalu\Zadani3" />
@@ -62,7 +60,7 @@
       <recent name="D:\Python_Projects\Zprac_Signalu\ZadaniPrace" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.2_Clean">
+  <component name="RunManager" selected="Python.__Zvuk__">
     <configuration name="2_Clean" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zprac_Signalu" />
       <option name="ENV_FILES" value="" />
@@ -99,28 +97,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Zadani1/__1__.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="__2.1__ (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Zprac_Signalu" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Zadani 2" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Zadani 2/__2.1__.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -173,13 +149,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="__Zvuk__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Zprac_Signalu" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/2Zadani_1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2Zadani_1/__Zvuk__.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.__Zvuk__" />
         <item itemvalue="Python.2_Clean" />
-        <item itemvalue="Python.__1__" />
-        <item itemvalue="Python.__2.1__ (1)" />
         <item itemvalue="Python.__3__" />
         <item itemvalue="Python.__2.2__" />
+        <item itemvalue="Python.__1__" />
       </list>
     </recent_temporary>
   </component>
