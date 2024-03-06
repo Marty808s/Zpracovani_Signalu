@@ -32,21 +32,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.2_Clean.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__1__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__2.1__ (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.__2.2__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__2__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__3__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__Zvuk__.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Python_Projects/Zprac_Signalu/Zadani3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.2_Clean.executor": "Run",
+    "Python.__1__.executor": "Run",
+    "Python.__2.1__ (1).executor": "Run",
+    "Python.__2.2__.executor": "Run",
+    "Python.__2__.executor": "Run",
+    "Python.__3__.executor": "Run",
+    "Python.__Zvuk__.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Python_Projects/Zprac_Signalu/Zadani3"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Python_Projects\Zprac_Signalu\Zadani3" />
@@ -60,7 +60,7 @@
       <recent name="D:\Python_Projects\Zprac_Signalu\ZadaniPrace" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.__Zvuk__">
+  <component name="RunManager" selected="Python.2_Clean">
     <configuration name="2_Clean" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zprac_Signalu" />
       <option name="ENV_FILES" value="" />
@@ -173,8 +173,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.__Zvuk__" />
         <item itemvalue="Python.2_Clean" />
+        <item itemvalue="Python.__Zvuk__" />
         <item itemvalue="Python.__3__" />
         <item itemvalue="Python.__2.2__" />
         <item itemvalue="Python.__1__" />

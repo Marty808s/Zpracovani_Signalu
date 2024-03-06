@@ -6,6 +6,7 @@ from scipy.signal import resample
 
 # Definice funkcí
 
+
 def adaptive_threshold_median(signal, window_size):
     thresholds = []
     for i in range(len(signal)):
@@ -15,10 +16,12 @@ def adaptive_threshold_median(signal, window_size):
         thresholds.append(threshold)
     return np.array(thresholds)
 
+
 def median_filter(signal, window_median):
     kernel = np.ones(window_median) / window_median
     smoothed_signal = convolution(signal, kernel)
     return smoothed_signal
+
 
 def convolution(signal, kernel):
     output_length = len(signal) + len(kernel) - 1
@@ -30,6 +33,7 @@ def convolution(signal, kernel):
             output[i] += signal[j] * kernel[i - j]
     return output
 
+
 def custom_find_peaks(signal, adaptive_thresholds, min_distance):
     is_peak = (signal[1:-1] > adaptive_thresholds[1:-1]) & (signal[1:-1] > signal[:-2]) & (signal[1:-1] > signal[2:])
     peaks = np.where(is_peak)[0] + 1
@@ -39,7 +43,8 @@ def custom_find_peaks(signal, adaptive_thresholds, min_distance):
             refined_peaks.append(peak)
     return np.array(refined_peaks)
 
-def HearthRate(data_path):
+
+def hearth_rate(data_path):
     signals, fields = wfdb.rdsamp(data_path)
     ECG_signal = signals[:, 0]
     fs = fields['fs']
@@ -91,6 +96,24 @@ def HearthRate(data_path):
 
     return R_peaks_indices, ECG_smoothed, fs
 
+
+def corelation_coef(signal1, signal2):
+    sig1 = signal1
+    sig2 = signal2
+
+    mean_sig1 = np.mean(sig1)
+    mean_sig2 = np.mean(sig2)
+    numerator = np.sum((sig1 - mean_sig1) * (sig2 - mean_sig2))
+    denominator = np.sqrt(np.sum((sig1 - mean_sig1) ** 2) * np.sum((sig2 - mean_sig2) ** 2))
+
+    if denominator == 0 or np.isnan(denominator):
+        correlation_coefficient = np.nan
+    else:
+        correlation_coefficient = numerator / denominator
+
+    return correlation_coefficient, (sig1 - mean_sig1) * (sig2 - mean_sig2)
+
+
 # Vytvoření seznamu souborů k analýze
 lib_path = 'InputData'
 files = os.listdir(lib_path)
@@ -100,7 +123,7 @@ drive_files = [file for file in files if file.endswith('.hea')]
 results = []
 for file_name in drive_files:
     file_path = os.path.join(lib_path, os.path.splitext(file_name)[0])
-    r_peaks, sig_smoothed, fs = HearthRate(file_path)
+    r_peaks, sig_smoothed, fs = hearth_rate(file_path)
     results.append((r_peaks, sig_smoothed, fs))
 
 # Zachovejte informace o frekvenci vzorkování a identifikovaných R-vrcholů
@@ -138,4 +161,9 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-# TODO: Korel. koef
+corelation_coef, corelation_points = corelation_coef(aligned_signals[3], aligned_signals[4])
+print("Korelační koef:", corelation_coef)
+print("Korelační koef body:", corelation_points)
+
+plt.plot(corelation_points,"r")
+plt.show()
