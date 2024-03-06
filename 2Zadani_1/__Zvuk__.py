@@ -2,6 +2,7 @@ import numpy as np
 import scipy.signal as sig
 import matplotlib.pyplot as plt
 
+
 def identify_words(signal, threshold):
     words = []
 
@@ -27,6 +28,7 @@ def identify_words(signal, threshold):
     words.append((word_start, crossings[-1]))
 
     return words
+
 
 def identify_letters(signal, rules, words):
     identified_letters = []
@@ -89,6 +91,8 @@ def check_match(features, frequency_range, amplitude_threshold):
         return True
     else:
         return False
+    
+    
 def get_rules():
     rules = {
         'a': {'frequency_range': (100, 1000), 'amplitude_threshold': 0.7},
@@ -119,6 +123,7 @@ def get_rules():
         'z': {'frequency_range': (2600, 13500), 'amplitude_threshold': 0.8}}
     return rules
 
+
 # Načtení signálu ze souboru
 with open('InputData/Signal1.txt', 'r') as file:
     signal_values = [float(line.strip()) for line in file.readlines()]
@@ -128,6 +133,7 @@ signal = np.array(signal_values)
 
 # Identifikace slov v signálu s prahovou hodnotou 0.5 pomocí Hammingova okna
 words = identify_words(signal, threshold=0.5)
+print(words)
 
 # Načtení pravidel pro identifikaci písmen
 rules = get_rules()

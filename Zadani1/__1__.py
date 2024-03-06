@@ -40,7 +40,7 @@ def convolution(signal, kernel):
 
 def custom_find_peaks(signal, adaptive_thresholds, min_distance):
     is_peak = (signal[1:-1] > adaptive_thresholds[1:-1]) & (signal[1:-1] > signal[:-2]) & (signal[1:-1] > signal[2:])
-    peaks = np.where(is_peak)[0] + 1  # Add 1 to adjust for the shifted index
+    peaks = np.where(is_peak)[0]  # Add 1 to adjust for the shifted index
 
     # Refine peaks based on the minimum distance
     refined_peaks = [peaks[0]]
@@ -49,6 +49,7 @@ def custom_find_peaks(signal, adaptive_thresholds, min_distance):
             refined_peaks.append(peak)
 
     return np.array(refined_peaks)
+
 
 def HearthRate(data_path):
     signals, fields = wfdb.rdsamp(data_path)
