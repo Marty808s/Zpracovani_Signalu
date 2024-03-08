@@ -86,6 +86,17 @@ def sort_values(signal, indexes):
     return vals
 
 
+def get_letters(dict=dict):
+    letters_in = []
+    for word in dict:
+        for i in word:
+            if i not in letters_in:
+                letters_in.append(i)
+            else:
+                continue
+    return letters_in
+
+
 # Načtení signálu ze souboru
 signal_path = 'InputData/Signal1.txt'
 signal = load_signal(signal_path)
@@ -97,9 +108,12 @@ words = identify_words(signal,threshold)
 visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
 
 # Zde můžete dále pracovat s identifikovanými slovy podle potřeby
-print("Identifikovaná slova - indexy:", words, '\n', print(len(words)))
+print("Identifikovaná slova - indexy:", words, '\n', len(words))
 
 sorted_words = sort_values(signal,words)
+
+letters = get_letters()
+print(letters,len(letters))
 
 fourier = {}
 
