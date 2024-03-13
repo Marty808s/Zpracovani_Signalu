@@ -12,6 +12,16 @@ k = smp.symbols('k', real=True, positive=True)
 x = smp.exp(-k * t ** 2) * k * t
 
 
+def adaptive_threshold_median(signal, window_size):
+    thresholds = []
+    for i in range(len(signal)):
+        start = max(0, i - window_size)
+        end = min(len(signal), i + window_size)
+        threshold = np.median(signal[start:end])
+        thresholds.append(threshold)
+    return np.array(thresholds)
+
+
 def median_filter(signal, window_median):
     kernel = np.ones(window_median) / window_median
     smoothed_signal = convolution(signal, kernel)
@@ -53,7 +63,7 @@ def visualize_signal(signal, amplitude_envelope, words):
     plt.show()
 
 
-def identify_words(signal, threshold):
+def identify_words(signal, threshold, win_size):
     words = []
 
     # Aplikace Hammingova okna na signál
@@ -65,23 +75,29 @@ def identify_words(signal, threshold):
     # Detekce přechodů signálu přes zvolený prah
     crossings = np.where(amplitude_envelope > threshold)[0]
 
-    # Určení začátku a konce každého slova na základě přechodů
+    # Určení začátku a konce každého slova na základě přechodů s využitím okna
     word_start = crossings[0]
+    window_sum = 0
     for i in range(1, len(crossings)):
         if crossings[i] - crossings[i-1] > 1:
-            words.append((word_start, crossings[i-1]))
+            if window_sum / win_size > threshold:
+                words.append((word_start, crossings[i-1]))
             word_start = crossings[i]
+            window_sum = 0
+        else:
+            window_sum += amplitude_envelope[crossings[i]]
 
     # Přidání posledního slova
-    words.append((word_start, crossings[-1]))
+    if window_sum > threshold * win_size:
+        words.append((word_start, crossings[-1]))
 
     return words
 
 
 wav_file = 'Samples/best_zaznam.wav'
 
-threshold = 2
-
+threshold = 100
+win_size = 20000
 wavefile = wave.open(wav_file, 'r')
 
 length = wavefile.getnframes()
@@ -112,17 +128,24 @@ plt.plot(data)
 plt.show()
 
 print(len(data))
-signal = data
+signal = data[:int((len(data)/8))]
 
-window_median = 5
-signal = median_filter(signal, window_median)
-
-print(signal[:50000])
+#adapt_tresh = adaptive_threshold_median(signal,10)
+#print(adapt_tresh)
+#print(signal[:50000])
 
 plt.plot(signal)
+#plt.plot(adapt_tresh, "r")
 plt.show()
 
-words = identify_words(signal, threshold)
-print(len(words))
 
-visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
+amplitude_env = apply_hilbert(apply_hamming(signal))
+
+med_thresh = adaptive_threshold_median(amplitude_env,3)
+print(med_thresh)
+
+words = identify_words(signal, threshold, win_size)
+print(f"Počet slov: {len(words)}")
+print(words)
+
+visualize_signal(signal, amplitude_env, words)
