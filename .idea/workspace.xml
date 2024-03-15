@@ -32,24 +32,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.2_Clean.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Samples_Zprac.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Zvuk3.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__1__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__2.1__ (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.__2.2__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__2__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__3__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__ZvukTest__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__Zvuk__.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Python_Projects/Zprac_Signalu/Zadani3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.2_Clean.executor": "Run",
+    "Python.Samples_Zprac.executor": "Debug",
+    "Python.Zvuk3.executor": "Run",
+    "Python.__1__.executor": "Run",
+    "Python.__2.1__ (1).executor": "Run",
+    "Python.__2.2__.executor": "Run",
+    "Python.__2__.executor": "Run",
+    "Python.__3__.executor": "Run",
+    "Python.__ZvukTest__.executor": "Run",
+    "Python.__Zvuk__.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Python_Projects/Zprac_Signalu/Zadani3"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Python_Projects\Zprac_Signalu\Zadani3" />
@@ -219,10 +219,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/2Zadani_1/Samples_Zprac.py</url>
-          <line>85</line>
-          <option name="timeStamp" value="1" />
+          <line>116</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

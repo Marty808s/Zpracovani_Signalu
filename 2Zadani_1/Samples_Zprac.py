@@ -1,51 +1,19 @@
 import numpy as np
-import wave
-import scipy as sp
 import matplotlib.pyplot as plt
 import sympy as smp
-import scipy.signal as sig
-from scipy.integrate import quad
 import wave, struct
 
 t, f = smp.symbols('t, f', real=True)
 k = smp.symbols('k', real=True, positive=True)
 x = smp.exp(-k * t ** 2) * k * t
 
-
-def adaptive_threshold_median(signal, window_size):
-    thresholds = []
-    for i in range(len(signal)):
-        start = max(0, i - window_size)
-        end = min(len(signal), i + window_size)
-        threshold = np.median(signal[start:end])
-        thresholds.append(threshold)
-    return np.array(thresholds)
-
-
-def median_filter(signal, window_median):
-    kernel = np.ones(window_median) / window_median
-    smoothed_signal = convolution(signal, kernel)
-    return smoothed_signal
-
+freq = 22050
 
 def convolution(signal, kernel):
     # Výstupní signál bude mít délku len(signal) + len(kernel) - 1
     output_length = len(signal) + len(kernel) - 1
     output = np.zeros(output_length)
     return output
-
-
-def apply_hamming(signal):
-    hamming_window = sig.get_window('hamming', len(signal))
-    signal_hamming = signal * hamming_window
-    return signal_hamming
-
-
-def apply_hilbert(signal):
-    analytic_signal = sig.hilbert(signal)
-    amplitude_envelope = np.abs(analytic_signal)
-    return amplitude_envelope
-
 
 def apply_fourier_transform(signal, f=f):
     spectrum = np.fft.fft(signal)
@@ -63,36 +31,40 @@ def visualize_signal(signal, amplitude_envelope, words):
     plt.show()
 
 
-def identify_words(signal, threshold, win_size):
-    words = []
+def cut_signal(signal,indexes):
+    A = []
+    for i in indexes:
+        y = signal[i[0]:i[1]]
+        A.append(y)
+    return A
 
-    # Aplikace Hammingova okna na signál
-    signal_hamming = apply_hamming(signal)
-
-    # Aplikace Hilbertovy transformace na signál pro získání analytickeho signálu
-    amplitude_envelope = apply_hilbert(signal_hamming)
-
-    # Detekce přechodů signálu přes zvolený prah
-    crossings = np.where(amplitude_envelope > threshold)[0]
-
-    # Určení začátku a konce každého slova na základě přechodů s využitím okna
-    word_start = crossings[0]
-    window_sum = 0
-    for i in range(1, len(crossings)):
-        if crossings[i] - crossings[i-1] > 1:
-            if window_sum / win_size > threshold:
-                words.append((word_start, crossings[i-1]))
-            word_start = crossings[i]
-            window_sum = 0
-        else:
-            window_sum += amplitude_envelope[crossings[i]]
-
-    # Přidání posledního slova
-    if window_sum > threshold * win_size:
-        words.append((word_start, crossings[-1]))
-
-    return words
-
+indexes = [
+    (221000, 260000),
+    (380000, 430000),
+    (545000, 600000),
+    (730000, 770000),
+    (910000, 960000),
+    (1080000, 1130000),
+    (1255000, 1310000),
+    (1430000, 1490000),
+    (1615000, 1670000),
+    (1790000, 1840000),
+    (1970000, 2020000),
+    (2180000, 2220000),
+    (2350000, 2400000),
+    (2530000, 2580000),
+    (2710000, 2750000),
+    (2880000, 2940000),
+    (3070000, 3130000),
+    (3250000, 3310000),
+    (3440000, 3500000),
+    (3610000, 3670000),
+    (3780000, 3850000),
+    (3960000, 4030000),
+    (4150000, 4210000),
+    (4340000, 4400000),
+    (4500000, 4570000),
+    (4670000, 4730000)]
 
 wav_file = 'Samples/best_zaznam.wav'
 
@@ -128,24 +100,26 @@ plt.plot(data)
 plt.show()
 
 print(len(data))
-signal = data[:int((len(data)/8))]
+signal = data
 
-#adapt_tresh = adaptive_threshold_median(signal,10)
-#print(adapt_tresh)
-#print(signal[:50000])
+alphabet = cut_signal(signal,indexes)
+print(len(alphabet))
+print(alphabet)
 
-plt.plot(signal)
-#plt.plot(adapt_tresh, "r")
+for i, s in enumerate(alphabet):
+    plt.plot(s, label=f'Podsignál {i+1}')
+plt.legend()
 plt.show()
 
+fourier = {}
 
-amplitude_env = apply_hilbert(apply_hamming(signal))
+for index, values in enumerate(alphabet):
+    freq, spect = apply_fourier_transform(values, freq)
+    fourier[index] = freq, spect
+    plt.plot(freq, np.abs(spect))
+    plt.title(f'Spektrum podsignálu {index+1}')
+    plt.xlabel('Frekvence')
+    plt.ylabel('Amplituda')
+    plt.show()
 
-med_thresh = adaptive_threshold_median(amplitude_env,3)
-print(med_thresh)
-
-words = identify_words(signal, threshold, win_size)
-print(f"Počet slov: {len(words)}")
-print(words)
-
-visualize_signal(signal, amplitude_env, words)
+print(fourier)
