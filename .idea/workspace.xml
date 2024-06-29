@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fce65556-8a24-458d-84c9-070304cd90b8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples_Zprac.py" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples_Zprac.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zadani1/__1__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Zadani1/__1__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZadaniPrace/~$minarniPrace-II.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +36,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.2_Clean.executor": "Run",
-    "Python.Samples_Zprac.executor": "Debug",
+    "Python.Samples_Zprac.executor": "Run",
     "Python.Zvuk3.executor": "Run",
     "Python.__1__.executor": "Run",
     "Python.__2.1__ (1).executor": "Run",
@@ -64,7 +65,7 @@
       <recent name="D:\Python_Projects\Zprac_Signalu\ZadaniPrace" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Samples_Zprac">
+  <component name="RunManager">
     <configuration name="2_Clean" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zprac_Signalu" />
       <option name="ENV_FILES" value="" />

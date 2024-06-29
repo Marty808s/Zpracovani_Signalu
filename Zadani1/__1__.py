@@ -1,11 +1,11 @@
 import os
+import pandas as pd
 import numpy as np
 import wfdb
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks, medfilt
 
 # TODO: manual : Numpy.Median (?), scipy.findpeaks
-
 
 def adaptive_threshold_median(signal, window_size):
     thresholds = []
@@ -28,7 +28,7 @@ def convolution(signal, kernel):
     output_length = len(signal) + len(kernel) - 1
     output = np.zeros(output_length)
 
-    # Pro každý výstupní bod provedeme sumu součinů odpovídajících vstupních bodů signálu a jádra
+    # Pro každý výstupní bod provedeme sum; u součinů odpovídajících vstupních bodů signálu a jádra
     for i in range(output_length):
         start = max(0, i - len(kernel) + 1)
         end = min(len(signal), i + 1)
@@ -80,7 +80,7 @@ def HearthRate(data_path):
     plt.ylabel('Amplituda')
     plt.legend()
     plt.grid(True)
-    plt.show()
+    #plt.show()
 
     # Výpočet tepové frekvence
     heart_rate = len(R_peaks_indices) / (len(ECG_smoothed) / fs) * 60
@@ -103,18 +103,27 @@ def HearthRate(data_path):
     plt.ylabel('Amplituda')
     plt.legend()
     plt.grid(True)
-    plt.show()
+    return heart_rate
 
 
 lib_path = 'InputData'
 files = os.listdir(lib_path)
 drive_files = [file for file in files if file.endswith('.hea')]
 
-print(drive_files)
+result_dict = {"Vzorek": [], "bpm": []}
 
 for item in drive_files:
     file_name = os.path.splitext(item)[0]
     print(file_name)
-    HearthRate(os.path.join(lib_path, file_name))
+    res = HearthRate(os.path.join(lib_path, file_name))
+    result_dict["Vzorek"].append(file_name)
+    result_dict["bpm"].append(res)
+
+print(len(result_dict["Vzorek"]))  # počet vzorků
+print(result_dict["Vzorek"])  # seznam názvů vzorků
+print(result_dict["bpm"])  # seznam výsledných bpm
 
 # TODO: - předělat buidl in funkce na origo - konvoluce!
+df_output = pd.DataFrame(data=result_dict)
+df_output.to_csv('out.csv', index=False)
+print(df_output)
