@@ -3,9 +3,9 @@ import numpy as np
 import wfdb
 import matplotlib.pyplot as plt
 from scipy.signal import resample
+import pandas as pd
 
 # Definice funkcí
-
 
 def adaptive_threshold_median(signal, window_size):
     thresholds = []
@@ -16,12 +16,10 @@ def adaptive_threshold_median(signal, window_size):
         thresholds.append(threshold)
     return np.array(thresholds)
 
-
 def median_filter(signal, window_median):
     kernel = np.ones(window_median) / window_median
     smoothed_signal = convolution(signal, kernel)
     return smoothed_signal
-
 
 def convolution(signal, kernel):
     output_length = len(signal) + len(kernel) - 1
@@ -33,7 +31,6 @@ def convolution(signal, kernel):
             output[i] += signal[j] * kernel[i - j]
     return output
 
-
 def custom_find_peaks(signal, adaptive_thresholds, min_distance):
     is_peak = (signal[1:-1] > adaptive_thresholds[1:-1]) & (signal[1:-1] > signal[:-2]) & (signal[1:-1] > signal[2:])
     peaks = np.where(is_peak)[0] + 1
@@ -42,7 +39,6 @@ def custom_find_peaks(signal, adaptive_thresholds, min_distance):
         if peak - refined_peaks[-1] > min_distance:
             refined_peaks.append(peak)
     return np.array(refined_peaks)
-
 
 def hearth_rate(data_path):
     signals, fields = wfdb.rdsamp(data_path)
@@ -58,68 +54,31 @@ def hearth_rate(data_path):
 
     R_peaks_indices = custom_find_peaks(ECG_smoothed, adaptive_thresholds, fs * 0.6)
 
-    """
-    plt.figure(figsize=(12, 6))
-    plt.plot(ECG_smoothed, label='Vyhlazený EKG signál')
-    plt.plot(R_peaks_indices, ECG_smoothed[R_peaks_indices], 'ro', label='Detekované R-vrcholy')
-    plt.plot(adaptive_thresholds, label='Adaptivní prah', linestyle='--')
-    plt.title('Vyhlazený EKG signál s detekovanými R-vrcholy a adaptivním prahem')
-    plt.xlabel('Vzorky')
-    plt.ylabel('Amplituda')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
-    """
-
     heart_rate = len(R_peaks_indices) / (len(ECG_smoothed) / fs) * 60
     print("Detekováno R-vrcholů:", len(R_peaks_indices))
     print("Tepová frekvence:", heart_rate, "bpm")
 
-    """
-    start_index = 0
-    end_index = int(fs * 2)
-    
-    plt.figure(figsize=(12, 6))
-    plt.plot(ECG_smoothed[start_index:end_index], label='Vyhlazený EKG signál')
-    plt.plot(R_peaks_indices[(R_peaks_indices >= start_index) & (R_peaks_indices < end_index)],
-             ECG_smoothed[R_peaks_indices[(R_peaks_indices >= start_index) & (R_peaks_indices < end_index)]],
-             'ro', label='Detekované R-vrcholy')
-    plt.plot(range(start_index, end_index), adaptive_thresholds[start_index:end_index],
-             label='Adaptivní prah', linestyle='--')
-    plt.title('2sekundový úsek vyhlazeného EKG signálu s detekovanými R-vrcholy a adaptivním prahem')
-    plt.xlabel('Vzorky')
-    plt.ylabel('Amplituda')
-    plt.legend()
-    plt.grid(True)
-    plt.show() 
-    """
-
     return R_peaks_indices, ECG_smoothed, fs
 
-
-def corelation_coef(signal1, signal2):
-    sig1 = signal1
-    sig2 = signal2
-
-    mean_sig1 = np.mean(sig1)
-    mean_sig2 = np.mean(sig2)
-    numerator = np.sum((sig1 - mean_sig1) * (sig2 - mean_sig2))
-    denominator = np.sqrt(np.sum((sig1 - mean_sig1) ** 2) * np.sum((sig2 - mean_sig2) ** 2))
+def calculate_correlation_coef(signal1, signal2):
+    mean_sig1 = np.mean(signal1)
+    mean_sig2 = np.mean(signal2)
+    numerator = np.sum((signal1 - mean_sig1) * (signal2 - mean_sig2))
+    denominator = np.sqrt(np.sum((signal1 - mean_sig1) ** 2) * np.sum((signal2 - mean_sig2) ** 2))
 
     if denominator == 0 or np.isnan(denominator):
         correlation_coefficient = np.nan
     else:
         correlation_coefficient = numerator / denominator
 
-    return correlation_coefficient, (sig1 - mean_sig1) * (sig2 - mean_sig2)
-
+    return correlation_coefficient
 
 # Vytvoření seznamu souborů k analýze
 lib_path = 'InputData'
 files = os.listdir(lib_path)
 drive_files = [file for file in files if file.endswith('.hea')]
 
-# Pro každý soubor zavolejte funkci HearthRate() a uložte výsledky
+# Pro každý soubor zavolejte funkci hearth_rate() a uložte výsledky
 results = []
 for file_name in drive_files:
     file_path = os.path.join(lib_path, os.path.splitext(file_name)[0])
@@ -132,10 +91,9 @@ for r_peaks, sig_smoothed, fs in results:
     print("Detekované R-vrcholy:", len(r_peaks))
 
 # Získání dominantní vzorkovací frekvence z listu results
-dominant_fs = np.argmax(np.bincount([fs for _, _, fs in results]))
-print(f"float: {dominant_fs}")
-dominant_fs = int(round(dominant_fs))  # Zaokrouhlení na nejbližší celé číslo
-print(dominant_fs)
+all_fs = [fs for _, _, fs in results]
+dominant_fs = np.argmax(np.bincount(all_fs))
+print(f"Dominantní vzorkovací frekvence: {dominant_fs}")
 
 # Resampling signálů na dominantní vzorkovací frekvenci
 resampled_signals = []
@@ -161,9 +119,25 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-corelation_coef, corelation_points = corelation_coef(aligned_signals[3], aligned_signals[4])
-print("Korelační koef:", corelation_coef)
-print("Korelační koef body:", corelation_points)
+# Výpočet korelačních koeficientů mezi všemi dvojicemi zarovnaných signálů
+correlation_matrix = np.zeros((len(aligned_signals), len(aligned_signals)))
 
-plt.plot(corelation_points,"r")
+for i in range(len(aligned_signals)):
+    for j in range(i, len(aligned_signals)):
+        cor = calculate_correlation_coef(aligned_signals[i], aligned_signals[j])
+        correlation_matrix[i, j] = cor
+        correlation_matrix[j, i] = cor
+
+# Převod korelační matice na DataFrame
+df = pd.DataFrame(correlation_matrix,
+                  index=[f'Signal {i+1}' for i in range(len(aligned_signals))],
+                  columns=[f'Signal {i+1}' for i in range(len(aligned_signals))])
+
+# Uložení DataFrame do CSV souboru
+df.to_csv('correlation_matrix.csv', float_format='%.4f')
+
+# Vizualizace korelační matice
+plt.imshow(correlation_matrix, cmap='hot', interpolation='nearest')
+plt.colorbar()
+plt.title('Korelační matice zarovnaných signálů')
 plt.show()
