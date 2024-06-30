@@ -3,9 +3,7 @@ import pandas as pd
 import numpy as np
 import wfdb
 import matplotlib.pyplot as plt
-from scipy.signal import find_peaks, medfilt
 
-# TODO: manual : Numpy.Median (?), scipy.findpeaks
 
 def adaptive_threshold_median(signal, window_size):
     thresholds = []
@@ -123,7 +121,6 @@ print(len(result_dict["Vzorek"]))  # počet vzorků
 print(result_dict["Vzorek"])  # seznam názvů vzorků
 print(result_dict["bpm"])  # seznam výsledných bpm
 
-# TODO: - předělat buidl in funkce na origo - konvoluce!
 df_output = pd.DataFrame(data=result_dict)
 df_output.to_csv('out.csv', index=False)
 print(df_output)
