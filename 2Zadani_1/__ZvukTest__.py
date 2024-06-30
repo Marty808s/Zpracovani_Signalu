@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.signal as sig
 import matplotlib.pyplot as plt
+from scipy.signal import spectrogram
 
 
 def load_signal(file_path):
@@ -24,23 +25,14 @@ def apply_hilbert(signal):
 def identify_words(signal, threshold, rules):
     words = []
 
-    # Aplikace Hammingova okna na signál
     signal_hamming = apply_hamming(signal)
-
-    # Aplikace Hilbertovy transformace na signál pro získání analytickeho signálu
     amplitude_envelope = apply_hilbert(signal_hamming)
-
-    # Detekce přechodů signálu přes zvolený prah
     crossings = np.where(amplitude_envelope > threshold)[0]
-
-    # Určení začátku a konce každého slova na základě přechodů
     word_start = crossings[0]
     for i in range(1, len(crossings)):
         if crossings[i] - crossings[i-1] > 1:
             words.append((word_start, crossings[i-1]))
             word_start = crossings[i]
-
-    # Přidání posledního slova
     words.append((word_start, crossings[-1]))
 
     return words
@@ -58,13 +50,22 @@ def visualize_signal(signal, amplitude_envelope, words):
 # Načtení signálu ze souboru
 signal_path = 'InputData/Signal1.txt'
 signal = load_signal(signal_path)
-
+sample_rate = 22050
 # Identifikace slov v signálu s prahovou hodnotou 0.5 pomocí Hammingova okna
 threshold = 0.5
 words = identify_words(signal, threshold, None)
-
-# Vizualizace signálu s identifikovanými slovy
 visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
-
-# Zde můžete dále pracovat s identifikovanými slovy podle potřeby
 print("Identifikovaná slova:", words)
+
+# Pro každý potenciální segment provedeme analýzu spektra a identifikujeme slova
+for start, end in words:
+
+    segment = signal[start:end]
+    if len(segment) >= 5:
+        frequencies, times, Sxx = spectrogram(segment, fs=sample_rate)
+        word_index = np.argmax(np.max(Sxx, axis=1))
+        word_frequency = frequencies[word_index]
+
+        if 100 <= word_frequency <= 2000:
+            print(f"Identified word 'the' at time {start / sample_rate:.2f} - {end / sample_rate:.2f}")
+
