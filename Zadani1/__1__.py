@@ -57,7 +57,7 @@ def HearthRate(data_path):
     fs = fields['fs']
     print(f"Vzork. freq: {fs}")
 
-    #ECG_signal = ECG_signal[:100000]# omezení pro testování
+    ECG_signal = ECG_signal[:100000]# omezení pro testování
 
     # Funkce pro adaptivní prahování založené na mediánu
 
@@ -118,7 +118,8 @@ def compare(bpm1, bpm2):
             diff = bpm1[id] - bpm2[id]
             print(f"Rozdíl mezi vypočítanou a referenční hodnotou {id}: {diff} bpm")
             dif_dict[id] = diff
-    return dif_dict
+    avg_diff = sum(dif_dict.values())/len(dif_dict)
+    return dif_dict, avg_diff
 
 
 lib_path = 'Zadani1/TestData/test_data'
@@ -143,8 +144,9 @@ df_output.to_csv(os.path.join(csv_path, 'out.csv'), index=False)
 print(df_output)
 
 
-comparsion = compare(result_dict, get_batch)
-print(comparsion)
+comparsion, avg_diff = compare(result_dict, get_batch)
+#print(comparsion)
+print(f"Průměrný rozdíl mezi vypočítanou a referenční hodnotou BPM: {avg_diff} bpm")
 
 plt.figure(figsize=(12, 6))
 plt.plot(comparsion.keys(), comparsion.values(), marker='o', label='Diference mezi vypočítanou a referenční hodnotou BPM')
