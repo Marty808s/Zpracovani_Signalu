@@ -65,7 +65,7 @@
       <recent name="D:\Python_Projects\Zprac_Signalu\ZadaniPrace" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.2_Clean">
+  <component name="RunManager">
     <configuration name="2_Clean" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Zprac_Signalu" />
       <option name="ENV_FILES" value="" />
