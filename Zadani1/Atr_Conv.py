@@ -3,7 +3,8 @@ import wfdb
 import numpy as np
 
 def calc_bpm(atr_data):
-    r_times = atr_data.sample / atr_data.fs
+    sample_rate = 100000
+    r_times = atr_data.sample[:sample_rate] / atr_data.fs
     rr_distance = np.diff(r_times)
     mean_rr = np.mean(rr_distance)
     bpm = round(60 / mean_rr, 0)

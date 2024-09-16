@@ -137,16 +137,30 @@ for item in drive_files:
     result_dict[file_name] = res
 
 
+
+comparsion, avg_diff = compare(result_dict, get_batch)
+#print(comparsion)
+print(f"Průměrný rozdíl mezi vypočítanou a referenční hodnotou BPM: {avg_diff} bpm")
+
+comparsion_dict = {"id": [], "Vypocet": [], "Skutecnost": [], "Chyba" : []}
+ids = list(result_dict.keys())
+for i in ids:
+    comparsion_dict["id"].append(i)
+    comparsion_dict["Vypocet"].append(result_dict[i])
+    comparsion_dict["Skutecnost"].append(get_batch[i])
+    comparsion_dict["Chyba"].append(comparsion[i])
+print(comparsion_dict)
+
+comparsion_df = pd.DataFrame(comparsion_dict)
+comparsion_df.to_csv(os.path.join(csv_path, 'comparsion.csv'), index=False)
+print(comparsion_df)
+
 df_output = pd.DataFrame.from_dict(result_dict, orient='index', columns=['bpm'])
 df_output.reset_index(inplace=True)
 df_output.columns = ['id', 'bpm']
 df_output.to_csv(os.path.join(csv_path, 'out.csv'), index=False)
 print(df_output)
 
-
-comparsion, avg_diff = compare(result_dict, get_batch)
-#print(comparsion)
-print(f"Průměrný rozdíl mezi vypočítanou a referenční hodnotou BPM: {avg_diff} bpm")
 
 plt.figure(figsize=(12, 6))
 plt.plot(comparsion.keys(), comparsion.values(), marker='o', label='Diference mezi vypočítanou a referenční hodnotou BPM')
