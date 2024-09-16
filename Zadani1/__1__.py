@@ -157,4 +157,3 @@ plt.title('Porovnání vypočítané a referenční tepové frekvence')
 plt.xlabel('ID záznamu')
 plt.ylabel('Rozdíl BPM')
 plt.show()
-

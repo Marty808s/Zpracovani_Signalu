@@ -98,7 +98,7 @@ def get_letters(dict=dict):
 
 
 # Načtení signálu ze souboru
-signal_path = 'InputData/Signal1.txt'
+signal_path = '2Zadani_1/InputData/Signal1.txt'
 signal = load_signal(signal_path)
 threshold = 0.5
 
