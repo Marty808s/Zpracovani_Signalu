@@ -39,7 +39,7 @@ for word in word_list:
 
     with open(path_to_text, 'w+') as f:
         for val in data:
-            f.write(f"{float(val[0])}\n")
+            f.write(f"{round(10000*float(val[0]))}\n")
     print(f"Soubor: {txt_name} byl úspěšně zapsán")
 
 
