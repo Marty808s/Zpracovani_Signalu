@@ -1,10 +1,12 @@
 import numpy as np
 import scipy as sp
+import os
 import matplotlib.pyplot as plt
 import sympy as smp
 import scipy.signal as sig
 from scipy.integrate import quad
 from scipy.interpolate import interp1d
+
 
 # Definice symbolických proměnných (pokud nejsou dále použity, lze je odstranit)
 t, f = smp.symbols('t, f', real=True)
@@ -98,98 +100,66 @@ def correlate_spectra(spectrum1, spectrum2):
     correlation = np.correlate(spectrum1, spectrum2, mode='valid')
     return np.max(correlation)
 
-def compare_spectral_properties(spectrum1, spectrum2):
-    mean_diff = np.abs(np.mean(spectrum1) - np.mean(spectrum2))
-    variance_diff = np.abs(np.var(spectrum1) - np.var(spectrum2))
-    energy_diff = np.abs(np.sum(spectrum1 ** 2) - np.sum(spectrum2 ** 2))
-    return mean_diff, variance_diff, energy_diff
-
-def cosine_similarity(spectrum1, spectrum2):
-    min_length = min(len(spectrum1), len(spectrum2))
-    spectrum1 = spectrum1[:min_length]
-    spectrum2 = spectrum2[:min_length]
-    return np.dot(spectrum1, spectrum2) / (np.linalg.norm(spectrum1) * np.linalg.norm(spectrum2))
-
-def visualize_spectral_comparison(freq, spectrum1, spectrum2, word_label):
+def visualize_spectral_comparison(freq, freq2, spectrum1, spectrum2, word_label):
     plt.figure(figsize=(12, 6))
-    plt.plot(freq, spectrum1, label='Spektrum vstupního slova')
-    plt.plot(freq, spectrum2, label=f'Spektrum slova "{word_label}" z banky')
+    plt.plot(freq, np.abs(spectrum1), label='Spektrum vstupního slova')
+    plt.plot(freq2, np.abs(spectrum2), label=f'Spektrum slova "{word_label}" z banky')
     plt.legend()
     plt.show()
 
-if __name__ == 'main':
-    # Načtení signálu ze souboru
-    signal_path = './InputData/Signal1.txt'
-    signal = load_signal(signal_path)
-    threshold = 0.5
+def load_bank():
+    lib_path = './Samples/gtts'
+    drive_files = [file for file in os.listdir(lib_path) if file.endswith('.txt')]
 
-    # Identifikace slov v signálu
-    words = identify_words(signal, threshold)
-
-    # Vizualizace signálu s identifikovanými slovy
-    visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
-
-    # Výpis identifikovaných slov
-    print("Identifikovaná slova - indexy:", words, '\n', "Počet slov:", len(words))
-
-    # Extrakce hodnot jednotlivých slov ze signálu
-    sorted_words = sort_values(signal, words)
-
-    # Získání seznamu unikátních písmen (pro informaci)
-    letters = get_letters()
-    print("Unikátní písmena ve slovníku:", letters, "Počet písmen:", len(letters))
-
-    # Generování syntetických signálů pro každé slovo ve slovníku (pro demonstrační účely)
-    word_signals = {}
-    for i, word in enumerate(word_list):
-        duration = 1.0  # Délka signálu v sekundách
-        t = np.linspace(0, duration, int(f * duration), endpoint=False)
-        frequency = 300 + i * 50  # Různá frekvence pro každé slovo
-        word_signal = np.sin(2 * np.pi * frequency * t)
-        word_signals[word] = word_signal
-
-    # Vytvoření banky frekvenčních spekter pro jednotlivá slova
-    spectral_bank = create_spectral_bank(word_signals, f)
-
-    # Vytvoření slovníku pro uložení frekvenčních spekter identifikovaných slov
     fourier = {}
+    for item in drive_files:
+        file_name = os.path.splitext(item)[0]
+        txt_file = f"{file_name}.txt"
+        path_to_file = os.path.join(lib_path, txt_file)
 
-    # Porovnání spekter identifikovaných slov se spektrem slov ve slovníku
-    recognized_words = {}
-    for index, values in sorted_words.items():
-        # Výpočet Fourierovy transformace identifikovaného slova
-        freq, spect = apply_fourier_transform(values, f)
-        fourier[index] = freq, spect
+        sig = load_signal(path_to_file)
+        freq, spec = apply_fourier_transform(sig)
 
-        # Inicializace pro porovnání
-        max_correlation = -np.inf
-        best_match = None
+        fourier[item] = freq, spec
+        #plt.plot(freq, np.abs(spec))
+        #plt.show()
+    return fourier
 
-        input_spectrum = np.abs(spect)
 
-        for word, (bank_freq, bank_spectrum) in spectral_bank.items():
-            # Interpolace spektra z banky, aby odpovídalo délce vstupního spektra
-            interp_func = interp1d(bank_freq, bank_spectrum, bounds_error=False, fill_value=0)
-            bank_spectrum_interp = interp_func(freq)
+# Načtení signálu ze souboru
+signal_path = './InputData/Signal1.txt'
+signal = load_signal(signal_path)
+spectra_bank = load_bank()
+threshold = 0.5
 
-            # Ujistěte se, že spektra mají stejnou délku
-            min_length = min(len(input_spectrum), len(bank_spectrum_interp))
-            input_spectrum_trimmed = input_spectrum[:min_length]
-            bank_spectrum_trimmed = bank_spectrum_interp[:min_length]
+# Identifikace slov v signálu
+words = identify_words(signal, threshold)
 
-            # Výpočet korelace mezi spektry
-            corr = correlate_spectra(input_spectrum_trimmed, bank_spectrum_trimmed)
+# Vizualizace signálu s identifikovanými slovy
+visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
 
-            # Porovnání korelace pro nalezení nejlepší shody
-            if corr > max_correlation:
-                max_correlation = corr
-                best_match = word
+# Výpis identifikovaných slov
+print("Identifikovaná slova - indexy:", words, '\n', "Počet slov:", len(words))
 
-        recognized_words[index] = best_match
-        print(f"Slovo {index} nejlépe odpovídá slovu '{best_match}' s korelací {max_correlation}")
+# Extrakce hodnot jednotlivých slov ze signálu
+sorted_words = sort_values(signal, words)
 
-        # Volitelná vizualizace spektrálního porovnání
-        visualize_spectral_comparison(freq[:min_length], input_spectrum_trimmed, bank_spectrum_trimmed, best_match)
+# Získání seznamu unikátních písmen (pro informaci)
+letters = get_letters()
+print("Unikátní písmena ve slovníku:", letters, "Počet písmen:", len(letters))
+frequence, fourier = apply_fourier_transform(signal, f=f)
 
-    # Výpis rozpoznaných slov
-    print("Rozpoznaná slova:", recognized_words)
+
+cor = {}
+for i in range(len(words)):
+    freq, spect = apply_fourier_transform(sorted_words[i])
+
+    for j in spectra_bank.keys():
+        specter = spectra_bank[j]
+        spect2 = specter[1]
+        freq2 = specter[0]
+        #print(spect)
+        cor_coef = correlate_spectra(spect, spect2)
+        cor[f"{i}.{j}"] = cor_coef
+        #visualize_spectral_comparison(freq, freq2,  spect, spect2, j)
+print(cor)

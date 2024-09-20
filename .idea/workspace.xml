@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.wav" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.wav" afterDir="false" />
@@ -21,6 +22,14 @@
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.wav" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/give.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/give.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/give.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/give.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/give.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/give.wav" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.wav" afterDir="false" />
@@ -30,12 +39,34 @@
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.wav" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.wav" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/mistake.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/mistake.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/mistake.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/mistake.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/mistake.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/mistake.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/prepare.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/prepare.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/prepare.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/prepare.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/prepare.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/prepare.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/probable.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/probable.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/probable.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/probable.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/probable.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/probable.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/succeed.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/succeed.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/succeed.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/succeed.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/succeed.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/succeed.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/time.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/time.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/time.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/time.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/time.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/time.wav" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Zvuk3.py" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Zvuk3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/gttstest.py" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/gttstest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -255,6 +286,21 @@
           <url>file://$PROJECT_DIR$/2Zadani_1/Samples_Zprac.py</url>
           <line>116</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/2Zadani_1/Zvuk3.py</url>
+          <line>148</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/2Zadani_1/Zvuk3.py</url>
+          <line>162</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/2Zadani_1/Zvuk3.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
