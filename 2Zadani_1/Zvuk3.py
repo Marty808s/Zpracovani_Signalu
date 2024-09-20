@@ -92,7 +92,6 @@ def create_spectral_bank(word_signals, f):
     return spectral_bank
 
 def correlate_spectra(spectrum1, spectrum2):
-    # Ujistěte se, že spektra mají stejnou délku
     min_length = min(len(spectrum1), len(spectrum2))
     spectrum1 = spectrum1[:min_length]
     spectrum2 = spectrum2[:min_length]
@@ -106,7 +105,6 @@ def compare_spectral_properties(spectrum1, spectrum2):
     return mean_diff, variance_diff, energy_diff
 
 def cosine_similarity(spectrum1, spectrum2):
-    # Ujistěte se, že spektra mají stejnou délku
     min_length = min(len(spectrum1), len(spectrum2))
     spectrum1 = spectrum1[:min_length]
     spectrum2 = spectrum2[:min_length]

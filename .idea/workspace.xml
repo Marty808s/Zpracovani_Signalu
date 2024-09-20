@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fce65556-8a24-458d-84c9-070304cd90b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/2Zadani_1/gtts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2Zadani_1/Zvuk3.py" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Zvuk3.py" afterDir="false" />
     </list>
@@ -37,7 +38,7 @@
     "Python.2_Clean.executor": "Run",
     "Python.Samples_Zprac.executor": "Run",
     "Python.TestZvuk.executor": "Run",
-    "Python.Zvuk3.executor": "Debug",
+    "Python.Zvuk3.executor": "Run",
     "Python.__1__.executor": "Run",
     "Python.__2.1__ (1).executor": "Run",
     "Python.__2.2__.executor": "Run",
@@ -45,10 +46,11 @@
     "Python.__3__.executor": "Run",
     "Python.__ZvukTest__.executor": "Run",
     "Python.__Zvuk__.executor": "Run",
+    "Python.gtts.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Python_Projects/Zprac_Signalu/Word"
+    "last_opened_file_path": "D:/Python_Projects/Zprac_Signalu"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -190,7 +192,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -223,11 +225,6 @@
           <url>file://$PROJECT_DIR$/2Zadani_1/Samples_Zprac.py</url>
           <line>116</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/2Zadani_1/Zvuk3.py</url>
-          <line>90</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
