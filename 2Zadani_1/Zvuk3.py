@@ -117,78 +117,79 @@ def visualize_spectral_comparison(freq, spectrum1, spectrum2, word_label):
     plt.legend()
     plt.show()
 
-# Načtení signálu ze souboru
-signal_path = './InputData/Signal1.txt'
-signal = load_signal(signal_path)
-threshold = 0.5
+if __name__ == 'main':
+    # Načtení signálu ze souboru
+    signal_path = './InputData/Signal1.txt'
+    signal = load_signal(signal_path)
+    threshold = 0.5
 
-# Identifikace slov v signálu
-words = identify_words(signal, threshold)
+    # Identifikace slov v signálu
+    words = identify_words(signal, threshold)
 
-# Vizualizace signálu s identifikovanými slovy
-visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
+    # Vizualizace signálu s identifikovanými slovy
+    visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
 
-# Výpis identifikovaných slov
-print("Identifikovaná slova - indexy:", words, '\n', "Počet slov:", len(words))
+    # Výpis identifikovaných slov
+    print("Identifikovaná slova - indexy:", words, '\n', "Počet slov:", len(words))
 
-# Extrakce hodnot jednotlivých slov ze signálu
-sorted_words = sort_values(signal, words)
+    # Extrakce hodnot jednotlivých slov ze signálu
+    sorted_words = sort_values(signal, words)
 
-# Získání seznamu unikátních písmen (pro informaci)
-letters = get_letters()
-print("Unikátní písmena ve slovníku:", letters, "Počet písmen:", len(letters))
+    # Získání seznamu unikátních písmen (pro informaci)
+    letters = get_letters()
+    print("Unikátní písmena ve slovníku:", letters, "Počet písmen:", len(letters))
 
-# Generování syntetických signálů pro každé slovo ve slovníku (pro demonstrační účely)
-word_signals = {}
-for i, word in enumerate(word_list):
-    duration = 1.0  # Délka signálu v sekundách
-    t = np.linspace(0, duration, int(f * duration), endpoint=False)
-    frequency = 300 + i * 50  # Různá frekvence pro každé slovo
-    word_signal = np.sin(2 * np.pi * frequency * t)
-    word_signals[word] = word_signal
+    # Generování syntetických signálů pro každé slovo ve slovníku (pro demonstrační účely)
+    word_signals = {}
+    for i, word in enumerate(word_list):
+        duration = 1.0  # Délka signálu v sekundách
+        t = np.linspace(0, duration, int(f * duration), endpoint=False)
+        frequency = 300 + i * 50  # Různá frekvence pro každé slovo
+        word_signal = np.sin(2 * np.pi * frequency * t)
+        word_signals[word] = word_signal
 
-# Vytvoření banky frekvenčních spekter pro jednotlivá slova
-spectral_bank = create_spectral_bank(word_signals, f)
+    # Vytvoření banky frekvenčních spekter pro jednotlivá slova
+    spectral_bank = create_spectral_bank(word_signals, f)
 
-# Vytvoření slovníku pro uložení frekvenčních spekter identifikovaných slov
-fourier = {}
+    # Vytvoření slovníku pro uložení frekvenčních spekter identifikovaných slov
+    fourier = {}
 
-# Porovnání spekter identifikovaných slov se spektrem slov ve slovníku
-recognized_words = {}
-for index, values in sorted_words.items():
-    # Výpočet Fourierovy transformace identifikovaného slova
-    freq, spect = apply_fourier_transform(values, f)
-    fourier[index] = freq, spect
+    # Porovnání spekter identifikovaných slov se spektrem slov ve slovníku
+    recognized_words = {}
+    for index, values in sorted_words.items():
+        # Výpočet Fourierovy transformace identifikovaného slova
+        freq, spect = apply_fourier_transform(values, f)
+        fourier[index] = freq, spect
 
-    # Inicializace pro porovnání
-    max_correlation = -np.inf
-    best_match = None
+        # Inicializace pro porovnání
+        max_correlation = -np.inf
+        best_match = None
 
-    input_spectrum = np.abs(spect)
+        input_spectrum = np.abs(spect)
 
-    for word, (bank_freq, bank_spectrum) in spectral_bank.items():
-        # Interpolace spektra z banky, aby odpovídalo délce vstupního spektra
-        interp_func = interp1d(bank_freq, bank_spectrum, bounds_error=False, fill_value=0)
-        bank_spectrum_interp = interp_func(freq)
+        for word, (bank_freq, bank_spectrum) in spectral_bank.items():
+            # Interpolace spektra z banky, aby odpovídalo délce vstupního spektra
+            interp_func = interp1d(bank_freq, bank_spectrum, bounds_error=False, fill_value=0)
+            bank_spectrum_interp = interp_func(freq)
 
-        # Ujistěte se, že spektra mají stejnou délku
-        min_length = min(len(input_spectrum), len(bank_spectrum_interp))
-        input_spectrum_trimmed = input_spectrum[:min_length]
-        bank_spectrum_trimmed = bank_spectrum_interp[:min_length]
+            # Ujistěte se, že spektra mají stejnou délku
+            min_length = min(len(input_spectrum), len(bank_spectrum_interp))
+            input_spectrum_trimmed = input_spectrum[:min_length]
+            bank_spectrum_trimmed = bank_spectrum_interp[:min_length]
 
-        # Výpočet korelace mezi spektry
-        corr = correlate_spectra(input_spectrum_trimmed, bank_spectrum_trimmed)
+            # Výpočet korelace mezi spektry
+            corr = correlate_spectra(input_spectrum_trimmed, bank_spectrum_trimmed)
 
-        # Porovnání korelace pro nalezení nejlepší shody
-        if corr > max_correlation:
-            max_correlation = corr
-            best_match = word
+            # Porovnání korelace pro nalezení nejlepší shody
+            if corr > max_correlation:
+                max_correlation = corr
+                best_match = word
 
-    recognized_words[index] = best_match
-    print(f"Slovo {index} nejlépe odpovídá slovu '{best_match}' s korelací {max_correlation}")
+        recognized_words[index] = best_match
+        print(f"Slovo {index} nejlépe odpovídá slovu '{best_match}' s korelací {max_correlation}")
 
-    # Volitelná vizualizace spektrálního porovnání
-    visualize_spectral_comparison(freq[:min_length], input_spectrum_trimmed, bank_spectrum_trimmed, best_match)
+        # Volitelná vizualizace spektrálního porovnání
+        visualize_spectral_comparison(freq[:min_length], input_spectrum_trimmed, bank_spectrum_trimmed, best_match)
 
-# Výpis rozpoznaných slov
-print("Rozpoznaná slova:", recognized_words)
+    # Výpis rozpoznaných slov
+    print("Rozpoznaná slova:", recognized_words)
