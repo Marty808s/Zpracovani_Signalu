@@ -6,37 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fce65556-8a24-458d-84c9-070304cd90b8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/advice.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/advice.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/advice.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/advice.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/advice.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/advice.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/disaster.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/easy.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/fail.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/idea.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/is.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/lecture.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/lecture.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/lecture.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/lecture.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/lecture.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/lecture.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/make.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/solution.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.wav" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Samples/gtts/work.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2Zadani_1/gttstest.py" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/gttstest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2Zadani_1/Zvuk3.py" beforeDir="false" afterPath="$PROJECT_DIR$/2Zadani_1/Zvuk3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

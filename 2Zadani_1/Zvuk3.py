@@ -6,7 +6,8 @@ import sympy as smp
 import scipy.signal as sig
 from scipy.integrate import quad
 from scipy.interpolate import interp1d
-
+from decimal import Decimal
+import cmath
 
 # Definice symbolických proměnných (pokud nejsou dále použity, lze je odstranit)
 t, f = smp.symbols('t, f', real=True)
@@ -163,3 +164,7 @@ for i in range(len(words)):
         cor[f"{i}.{j}"] = cor_coef
         #visualize_spectral_comparison(freq, freq2,  spect, spect2, j)
 print(cor)
+for key in cor:
+    cor[key] = Decimal(abs(cmath.polar(cor[key])[0]))
+
+print("Slovník s absolutními hodnotami:", cor)
