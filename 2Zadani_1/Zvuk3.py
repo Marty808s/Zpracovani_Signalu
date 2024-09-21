@@ -163,7 +163,7 @@ for i in range(len(words)):
         #print(spect)
         cor_coef = correlate_spectra(spect, spect2)
         cor[f"{i} | {j}"] = cor_coef
-        #visualize_spectral_comparison(freq, freq2,  spect, spect2, j)
+        visualize_spectral_comparison(freq, freq2,  spect, spect2, j)
 #print(cor)
 
 # Převod komplexího čísla na decimal..
