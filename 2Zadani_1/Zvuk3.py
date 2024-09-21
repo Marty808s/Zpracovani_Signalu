@@ -8,6 +8,7 @@ from scipy.integrate import quad
 from scipy.interpolate import interp1d
 from decimal import Decimal
 import cmath
+import pandas as pd
 
 # Definice symbolických proměnných (pokud nejsou dále použity, lze je odstranit)
 t, f = smp.symbols('t, f', real=True)
@@ -161,10 +162,45 @@ for i in range(len(words)):
         freq2 = specter[0]
         #print(spect)
         cor_coef = correlate_spectra(spect, spect2)
-        cor[f"{i}.{j}"] = cor_coef
+        cor[f"{i} | {j}"] = cor_coef
         #visualize_spectral_comparison(freq, freq2,  spect, spect2, j)
-print(cor)
-for key in cor:
-    cor[key] = Decimal(abs(cmath.polar(cor[key])[0]))
+#print(cor)
 
-print("Slovník s absolutními hodnotami:", cor)
+# Převod komplexího čísla na decimal..
+for key in cor:
+    cor[key] = Decimal(cmath.polar(cor[key])[0])
+
+data = []
+for key, value in cor.items():
+    sample_i, sample_j = key.split(' | ')
+    data.append([sample_i, sample_j, value])
+
+# Dataframe pro tabulku
+df = pd.DataFrame(data, columns=['Sample_i', 'Sample_j', 'Correlation'])
+csv_path = "./Samples"
+df.to_csv(os.path.join(csv_path, 'cor_out.csv'), index=False)
+
+max_cor_df = df.loc[df.groupby('Sample_i')['Correlation'].idxmax()]
+final_cor = max_cor_df.sort_values("Sample_i", ascending=False)
+
+final_cor.to_csv(os.path.join(csv_path, 'max_cor_out.csv'), index=False)
+
+unique_samples = df['Sample_j'].unique()
+colors = plt.cm.get_cmap('tab20', len(unique_samples))
+
+color_mapping = {sample: colors(i) for i, sample in enumerate(unique_samples)}
+df['color'] = df['Sample_j'].map(color_mapping)
+
+plt.figure(figsize=(10, 6))
+plt.bar(df['Sample_i'], df['Correlation'], color=df['color'])
+plt.yscale('log') # Log. transformace
+plt.xlabel('Sample_i')
+plt.ylabel('Corr (log scale)')
+plt.title('Correlation - sample_i X sample_j')
+plt.xticks(df['Sample_i'])
+
+legend_labels = [plt.Line2D([0], [0], color=color_mapping[sample], lw=4) for sample in unique_samples]
+plt.legend(legend_labels, unique_samples, title='Sample_j', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+plt.tight_layout()
+plt.show()
