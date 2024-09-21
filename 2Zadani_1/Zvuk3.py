@@ -1,19 +1,10 @@
 import numpy as np
-import scipy as sp
 import os
 import matplotlib.pyplot as plt
-import sympy as smp
 import scipy.signal as sig
-from scipy.integrate import quad
-from scipy.interpolate import interp1d
 from decimal import Decimal
 import cmath
 import pandas as pd
-
-# Definice symbolických proměnných (pokud nejsou dále použity, lze je odstranit)
-t, f = smp.symbols('t, f', real=True)
-k = smp.symbols('k', real=True, positive=True)
-x = smp.exp(-k * t ** 2) * k * t
 
 # Vzorkovací frekvence
 f = 22050
@@ -27,10 +18,16 @@ def load_signal(file_path):
         signal_values = [float(line.strip()) for line in file.readlines()]
     return np.array(signal_values)
 
-def apply_hamming(signal):
-    hamming_window = sig.get_window('hamming', len(signal))
-    signal_hamming = signal * hamming_window
-    return signal_hamming
+def apply_hamming(signal, words):
+    signal_with_hamming = np.zeros_like(signal)
+    for start, end in words:
+        # Aplikujeme Hammingovo okno na každé detekované slovo
+        word_segment = signal[start:end]
+        hamming_window = sig.get_window('hamming', len(word_segment))
+        word_segment_hamming = word_segment * hamming_window
+        # Nahrazení původní části signálu oknem
+        signal_with_hamming[start:end] = word_segment_hamming
+    return signal_with_hamming
 
 def apply_hilbert(signal):
     analytic_signal = sig.hilbert(signal)
@@ -52,12 +49,11 @@ def visualize_signal(signal, amplitude_envelope, words):
     plt.legend()
     plt.show()
 
+
 def identify_words(signal, threshold):
     words = []
-    # Aplikace Hammingova okna na signál
-    signal_hamming = apply_hamming(signal)
     # Aplikace Hilbertovy transformace na signál pro získání analytického signálu
-    amplitude_envelope = apply_hilbert(signal_hamming)
+    amplitude_envelope = apply_hilbert(signal)
     # Detekce přechodů signálu přes zvolený práh
     crossings = np.where(amplitude_envelope > threshold)[0]
     if len(crossings) == 0:
@@ -128,6 +124,7 @@ def load_bank():
     return fourier
 
 
+
 # Načtení signálu ze souboru
 signal_path = './InputData/Signal3.txt'
 signal = load_signal(signal_path)
@@ -136,9 +133,9 @@ threshold = 13
 
 # Identifikace slov v signálu
 words = identify_words(signal, threshold)
-
+smoothed = apply_hamming(apply_hilbert(signal), words)
 # Vizualizace signálu s identifikovanými slovy
-visualize_signal(signal, apply_hilbert(apply_hamming(signal)), words)
+visualize_signal(signal, smoothed, words)
 
 # Výpis identifikovaných slov
 print("Identifikovaná slova - indexy:", words, '\n', "Počet slov:", len(words))
