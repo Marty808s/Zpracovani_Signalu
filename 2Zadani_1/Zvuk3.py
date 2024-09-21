@@ -129,10 +129,10 @@ def load_bank():
 
 
 # Načtení signálu ze souboru
-signal_path = './InputData/Signal1.txt'
+signal_path = './InputData/Signal3.txt'
 signal = load_signal(signal_path)
 spectra_bank = load_bank()
-threshold = 0.5
+threshold = 13
 
 # Identifikace slov v signálu
 words = identify_words(signal, threshold)
@@ -163,7 +163,7 @@ for i in range(len(words)):
         #print(spect)
         cor_coef = correlate_spectra(spect, spect2)
         cor[f"{i} | {j}"] = cor_coef
-        visualize_spectral_comparison(freq, freq2,  spect, spect2, j)
+        #visualize_spectral_comparison(freq, freq2,  spect, spect2, j)
 #print(cor)
 
 # Převod komplexího čísla na decimal..
