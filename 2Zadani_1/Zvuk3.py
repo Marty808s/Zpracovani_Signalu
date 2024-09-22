@@ -132,7 +132,6 @@ def correlate_spectra(spectrum1, spectrum2):
     :param spectrum2: Signál z nagenerované banky
     :return: Maximální korelační koeficient
     """
-    # Srovnání signálů na stejné délky
     spectrum1 = spectrum1
     spectrum2 = spectrum2
     correlation = np.correlate(spectrum1, spectrum2, mode='valid')
