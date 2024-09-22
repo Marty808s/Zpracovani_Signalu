@@ -167,10 +167,10 @@ def visualize_spectral_comparison(freq, freq2, spectrum1, spectrum2, word_label)
 
 
 # Načtení signálu ze souboru
-signal_path = './InputData/Signal1.txt'
+signal_path = './InputData/Signal3.txt'
 signal = load_signal(signal_path)
 spectra_bank = load_bank()
-threshold = 13
+threshold = 25
 
 # Identifikace slov v signálu
 words = identify_words(signal, threshold)
